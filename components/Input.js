@@ -1,21 +1,21 @@
 import React from 'react'
 import { StyleSheet, TextInput } from 'react-native'
+import { Input } from 'native-base'
 
-export default function Input(props) {
+export default function Inputs(props) {
   return (
-    <TextInput
-      {...props}
-      placeholder={props.placeholder}
-      style={{ ...styles.input, ...props.style }}
-    />
+    <>
+      <Input
+        {...props}
+        variant="rounded"
+        placeholder="Enter a number"
+        _light={{
+          placeholderTextColor: 'blueGray.400',
+        }}
+        _dark={{
+          placeholderTextColor: 'blueGray.50',
+        }}
+      />
+    </>
   )
 }
-
-const styles = StyleSheet.create({
-  input: {
-    height: 30,
-    borderBottomColor: 'gray',
-    borderBottomWidth: 1,
-    marginVertical: 15,
-  },
-})

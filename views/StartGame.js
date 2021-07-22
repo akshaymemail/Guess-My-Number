@@ -3,15 +3,14 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
 } from 'react-native'
 import Card from '../components/Card'
-import Input from '../components/Input'
 import NumberContainer from '../components/NumberContainer'
 import colors from '../constants/colors'
+import { Button, Input } from 'native-base'
 
 export default function StartGame() {
   const [enteredText, setEnteredText] = useState(null)
@@ -44,19 +43,27 @@ export default function StartGame() {
   if (confirmed) {
     confirmOutput = (
       <Card style={styles.selectedCard}>
-        <Text>You Selected : </Text>
+        <Text style={{ textAlign: 'center' }}> You Selected </Text>
         <NumberContainer>{selectedNumber}</NumberContainer>
-        <Button title="START GAME" color={colors.primary} />
+        <Button variant="solid" colorScheme="secondary">
+          START GAME
+        </Button>
       </Card>
     )
   }
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.screen}>
-        <Text style={styles.title}>Start Gme</Text>
         <Card style={styles.inputContainer}>
+          <Text style={styles.title}>Start Gme</Text>
           <Input
-            style={styles.textInput}
+            variant="rounded"
+            _light={{
+              placeholderTextColor: 'blueGray.400',
+            }}
+            _dark={{
+              placeholderTextColor: 'blueGray.50',
+            }}
             placeholder="Enter a number"
             autoCompleteType="off"
             blurOnSubmit
@@ -69,17 +76,21 @@ export default function StartGame() {
           <View style={styles.buttonContainer}>
             <View style={styles.btn}>
               <Button
-                title="Reset"
-                color={colors.secondary}
                 onPress={resetHandler}
-              />
+                variant="outline"
+                colorScheme="primary"
+              >
+                Reset
+              </Button>
             </View>
             <View style={styles.btn}>
               <Button
-                title="Enter"
-                color={colors.primary}
                 onPress={confirmHandler}
-              />
+                variant="outline"
+                colorScheme="secondary"
+              >
+                Enter
+              </Button>
             </View>
           </View>
         </Card>
@@ -88,7 +99,6 @@ export default function StartGame() {
     </TouchableWithoutFeedback>
   )
 }
-
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -120,5 +130,6 @@ const styles = StyleSheet.create({
   selectedCard: {
     padding: 30,
     marginVertical: 20,
+    textAlign: 'center',
   },
 })
