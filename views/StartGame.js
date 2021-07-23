@@ -12,7 +12,7 @@ import NumberContainer from '../components/NumberContainer'
 import colors from '../constants/colors'
 import { Button, Input } from 'native-base'
 
-export default function StartGame() {
+export default function StartGame(props) {
   const [enteredText, setEnteredText] = useState(null)
   const [confirmed, setConfirmed] = useState(false)
   const [selectedNumber, setSelectedNumber] = useState()
@@ -45,7 +45,11 @@ export default function StartGame() {
       <Card style={styles.selectedCard}>
         <Text style={{ textAlign: 'center' }}> You Selected </Text>
         <NumberContainer>{selectedNumber}</NumberContainer>
-        <Button variant="solid" colorScheme="secondary">
+        <Button
+          variant="solid"
+          colorScheme="secondary"
+          onPress={() => props.onGameStart(selectedNumber)}
+        >
           START GAME
         </Button>
       </Card>
@@ -131,5 +135,7 @@ const styles = StyleSheet.create({
     padding: 30,
     marginVertical: 20,
     textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 })

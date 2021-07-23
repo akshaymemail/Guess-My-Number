@@ -17,8 +17,10 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     marginVertical: 15,
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    width: 50,
   },
   number: {
     color: colors.secondary,
